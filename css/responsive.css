@@ -1,0 +1,247 @@
+/* home section */
+@media screen and (max-width: 1174px){
+    .to-bar-widget .widget button{
+        width: 130px;
+        font-size: 13px;
+    }
+    .to-bar-widget .widget button img{
+        width: 17px;
+    }
+    .to-bar-widget .widget button{
+        font-size: 14px !important;
+        width: 140px;
+        height: 40px;
+    }
+    .to-bar-widget .widget button img{
+        width: 18px;
+    }
+    .w98{
+        max-width: 100%;
+    }
+    
+}
+
+@media (max-width: 991.98px) { 
+
+    .header .content {
+        margin: 15px 0;
+    }
+    .header .content ul{
+        padding: 0;
+    }
+    .to-bar-widget{
+        padding-bottom: 20px;
+    }
+    .to-bar-widget .widget h3{
+        text-align: center;
+        padding: 0;
+    }
+    .to-bar-widget .widget h3 span{
+        display: none;
+    }
+    .widget.buttons {
+    max-width: 278px;
+        margin: 0 auto;
+}
+    .header .icons, .header .logo{
+        text-align: center;
+    }
+    .footer .content ul{
+        padding: 0;
+    }
+    .footer .content ul li{
+        margin: 5px;
+    }
+    
+    
+    .movie-list-menu{
+        margin-bottom: 30px;
+    }
+    .signup input{
+        width: 20rem;
+    }
+    .to-bar-widget .widget button {
+    font-size: 10px !important;
+    width: 121px;
+    height: 40px;
+}
+    .widget.buttons{
+        margin: 20px auto;
+    }
+    .con555{
+        max-width: 96%;
+    }
+    .profile-area .ui-tabs-vertical .ui-tabs-panel{
+       
+    }
+    .movie-list .top-bar .select select{
+        width: 185px;
+    }
+    .w14 .box button{
+        width: 8rem;
+    }
+    
+}
+
+@media (max-width: 767.98px) {
+    
+    .container{
+        max-width: 100%;
+    }
+    #myForm .tab{
+        text-align: center;
+    }
+    .signup button.next, .ver button {
+    position: relative;
+    top: inherit;
+    transform: inherit;
+}
+    .w98 .boxx{
+        padding-left: 45%;
+    }
+    .to-bar-widget, .footer{
+        position: relative !important;
+        height: auto !important;
+    }
+    .profile-area #tabs ul {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .personal-info{
+        padding: 20px;
+    }
+    .upload-content .bar{
+        padding: 10px;
+    }
+    .upload-content .bar img{
+        width: 38px;
+    }
+
+}
+
+@media (max-width: 575.98px) { 
+
+    .nav-bar ul li{
+        margin: 5px 0;
+    }
+    .nav-bar ul li a{
+        font-size: 12px;
+    }
+    .movie-list .top-bar h2{
+        font-size: 22px;
+    }
+    .movie-list .thumbnail img {
+        width: 100%;
+    }
+    
+    .left-content{
+        overflow: auto;
+    }
+    .left-content table .tile {
+        width: 24%;
+    }
+    .left-content table h6, .left-content table p{
+        font-size: 12px;
+    }
+    .pagination ul li a span {
+        font-size: 12px;
+        margin-top: 0;
+    }
+    .pagination ul li{
+        margin: 5px;
+    }
+    .pagination ul li a span{
+        font-size: 12px;
+    }
+    .pagination ul li a {
+        font-size: 12px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+    }
+    .w98 .boxx {
+    padding-left: 30%;
+}
+    .viewer-area .thumbnail button {
+        width: 290px;
+        height: 62px;
+        font-size: 20px;
+    }
+    .viewer-area .box .b110{
+        display: none;
+    }
+    .usd{
+        padding-top: 40px;
+    }
+    .w98 .box ul li{
+        margin-left: 20px;
+    }
+    .personal-info .upload h4{
+        font-size: 15px;
+    }
+    .personal-info .upload p{
+        font-size: 10px;
+    }
+    .personal-info .upload .image{
+        width: 80px;
+    }
+    .personal-info .upload .username{
+        padding-left: 90px;
+    }
+    .previous{
+        top: -326px !important;
+    }
+    .ver input{
+        margin-bottom: 15px;
+    }
+     .upload-content .bar h4{
+        font-size: 15px;
+    }
+    .upload-content .bar button {
+        width: 105px;
+        height: 29px;
+        font-size: 11px;
+    }
+    .upload-content .right-bar .thumnail{
+        padding-top: 1rem;
+    }
+     #tabs ul li{
+        margin: 5px 0;
+    }
+    #tabs ul li a{
+        font-size: 11px;
+    }
+    .upload-content .bar h4{
+       padding-left: 40px;
+        
+    }
+
+}
+
+@media screen and (max-width: 390px){
+   .left-content table h6, .left-content table p {
+        font-size: 8px;
+       text-align: center;
+    }
+    .par p {
+        text-align: center;
+    }
+    .nav-bar ul li a.active::before{
+        bottom: 0;
+    }
+}
+
+@media screen and (max-width: 330px){
+   
+}
+
+
+
+
+
+
+
+
+
+

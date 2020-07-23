@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <!-- ================css link=================== -->
+
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- jquery ui -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <!-- font awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/fontawesome.min.css" rel="stylesheet">
+    <!-- video popup -->
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.default.css" rel="stylesheet">
+    <!-- swiper slider -->
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.default.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/multi-form.css">
+    <!-- custom css -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- responsive -->
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+
+    <!-- signup area -->
+    <section class="signup">
+        <div class="singhup-content">
+            <form id="myForm" action="#" method="POST" onsubmit="return vali();">
+               <div class="cross"><img src="images/cross.JPG" alt=""></div>
+                <div class="headline">
+                    <img src="images/9.JPG" alt="">
+                    <h2>Mobile Verification</h2>
+                    <h6>Mobile Phone verification process is required to complete sign-up</h6>
+                </div>
+                <!-- One "tab" for each step in the form: -->
+                <div class="tab">
+                    <p><input type="tel" placeholder="Your Phone Number" name="fname"></p>
+                    <button type="button" class="next">get verification number</button>
+
+                </div>
+                <div class="tab">
+                    <div class="ver">
+                        <input type="text" value="0984747383" disabled>
+                        <button disabled>get verification number</button>
+                       
+                    </div>
+                    <div class="box">
+                        <div class="text">
+                            <span>We've send a verificatio code by sms.</span>
+                            <span>Enter the code in 30s</span>
+                        </div>
+                        <p><input placeholder="Code No..." name="phone"></p>
+                        <button type="button" class="next">Verify Code</button>
+                        <button type="button" class="previous"><span><i class="fas fa-chevron-left"></i></span> Back</button>
+                    </div>
+                </div>
+                <div class="tab">
+                    <div class="ver">
+                        <input type="text" value="0984747383" disabled>
+                        <button disabled>get verification number</button>
+                    </div>
+                    <div class="ver">
+                        <input type="text" value="12345" disabled>
+                        <button disabled>vrify code</button>
+                    </div>
+
+                    <button type="button" class="next n12">Start Greatoon</button>
+                    <button type="button" class="previous"><span><i class="fas fa-chevron-left"></i></span> Back</button>
+                </div>
+                <div class="tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="box">
+                                <p><input placeholder="Username..." name="Id*"></p>
+                                <div class="ver">
+                                    <input type="text" placeholder="RealName" disabled>
+                                </div>
+                                <p><input placeholder="Password..." name="password" type="password"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box c15">
+
+                                <span id="textspan" style="color:red"></span>
+                                <div class="input">
+                                    <span><strong>I agree all the terms below</strong></span><input type="checkbox" class='gender' id="male">
+                                </div>
+                                <hr>
+                                <div class="input">
+                                    <span>I agree on <a href="#">Service terms</a> *</span><input type="checkbox" class='gender' id="male">
+                                </div>
+                                <div class="input">
+                                    <span>I agree on <a href="#">Privacy Policy</a> *</span><input type="checkbox" class='gender' id="female2">
+                                </div>
+                                <div class="input">
+                                    <span>Consent to receive Marketing Information *</span><input type="checkbox" class='gender' id="female2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="next validate">Next</button>
+                </div>
+                <div style="overflow:auto;">
+                    <div>
+                        <button type="button" class="submit">Sign Up</button>
+                    </div>
+                </div>
+                <!-- Circles which indicates the steps of the form: -->
+                <!-- <div style="text-align:center;margin-top:40px;">
+                    <span class="step">1</span>
+                    <span class="step">2</span>
+                    <span class="step">3</span>
+                    <span class="step">4</span>
+                </div>-->
+            </form>
+        </div>
+    </section>
+    <!-- end signup area -->
+
+
+
+
+    <!-- js link -->
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- jquery ui -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- counting up -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.countup.min.js"></script>
+    <!-- font awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+    <!-- owl carousel -->
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/multi-form.js"></script>
+    <!-- custom js -->
+    <script src="js/custom.js"></script>
+    <script type="text/javascript">
+       
+    </script>
+</body>
+
+</html>

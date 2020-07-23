@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ================css link=================== -->
+
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- jquery ui -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <!-- font awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/fontawesome.min.css" rel="stylesheet">
+    <!-- imageuploadify css -->
+    <link rel="stylesheet" href="css/imageuploadify.min.css">
+    <!-- custom css -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- responsive -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .panel {
+            margin: 100px auto 40px;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .button_outer {
+            background: #83ccd3;
+            border-radius: 30px;
+            text-align: center;
+            height: 50px;
+            width: 200px;
+            display: inline-block;
+            transition: .2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn_upload {
+            padding: 17px 30px 12px;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            z-index: 3;
+            white-space: nowrap;
+        }
+
+        .btn_upload input {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 105%;
+            cursor: pointer;
+            opacity: 0;
+        }
+
+        .file_uploading {
+            width: 100%;
+            height: 10px;
+            margin-top: 20px;
+            background: #ccc;
+        }
+
+        .file_uploading .btn_upload {
+            display: none;
+        }
+
+        .processing_bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            border-radius: 30px;
+            background: #83ccd3;
+            transition: 3s;
+        }
+
+        .file_uploading .processing_bar {
+            width: 100%;
+        }
+
+        .success_box {
+            display: none;
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+
+        .success_box:before {
+            content: '';
+            display: block;
+            width: 9px;
+            height: 18px;
+            border-bottom: 6px solid #fff;
+            border-right: 6px solid #fff;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            position: absolute;
+            left: 17px;
+            top: 10px;
+        }
+
+        .file_uploaded .success_box {
+            display: inline-block;
+        }
+
+        .file_uploaded {
+            margin-top: 0;
+            width: 50px;
+            background: #83ccd3;
+            height: 50px;
+        }
+
+        .uploaded_file_view {
+            max-width: 300px;
+            margin: 40px auto;
+            text-align: center;
+            position: relative;
+            transition: .2s;
+            opacity: 0;
+            border: 2px solid #ddd;
+            padding: 15px;
+        }
+
+        .file_remove {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: block;
+            position: absolute;
+            background: #aaa;
+            line-height: 30px;
+            color: #fff;
+            font-size: 12px;
+            cursor: pointer;
+            right: -15px;
+            top: -15px;
+        }
+
+        .file_remove:hover {
+            background: #222;
+            transition: .2s;
+        }
+
+        .uploaded_file_view img {
+            max-width: 100%;
+        }
+
+        .uploaded_file_view.show {
+            opacity: 1;
+        }
+
+        .error_msg {
+            text-align: center;
+            color: #f00
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- header area -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-12">
+                    <!-- logo -->
+                    <div class="logo">
+                        <a href="#"><img src="images/logo.png" alt=""></a>
+                    </div>
+                    <!-- end logo -->
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <!-- content -->
+                    <div class="content">
+                        <form action="#">
+                            <input id="tags" type="text" name="search" placeholder="Search">
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                    <!-- end content -->
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <!-- content -->
+                    <div class="content icons">
+                        <ul>
+                            <li><i class="fas fa-long-arrow-alt-up"></i></li>
+                            <li>
+                                <!-- dropdown -->
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="bel12" style="display: block"><i class="far fa-bell"></i> <span class="alerts"></span></span>
+                                    </button>
+                                    <div class="arrow"></div>
+                                    <div class="npopup" aria-labelledby="dropdownMenuButton">
+                                        <div id="tabs" class="t222">
+                                            <ul>
+                                                <li><a href="#tabs-1">2 New webtoons</a></li>
+                                                <li><a href="#tabs-2">2 Notifications</a></li>
+                                            </ul>
+                                            <div id="tabs-1">
+                                                <div class="cont">
+                                                    <!-- box -->
+                                                    <div class="box">
+                                                        <img src="images/1.png" alt="">
+                                                        <div class="text">
+                                                            <div class="bar">
+                                                                <img src="images/3.png" alt="">
+                                                                <p>Yahiro Ayuko</p>
+                                                                <ul>
+                                                                    <li><span><i class="far fa-clock"></i></span> 29d</li>
+                                                                    <li><span><i class="fas fa-eye"></i></span> 256</li>
+                                                                </ul>
+                                                            </div>
+                                                            <h6>Ep.6 Good signs</h6>
+                                                            <a href="#">City of Dead Wizard <span><i class="fas fa-chevron-circle-right"></i></span></a>
+                                                        </div>
+                                                    </div>
+                                                    <!--end box -->
+                                                    <!-- box -->
+                                                    <div class="box">
+                                                        <img src="images/1.png" alt="">
+                                                        <div class="text">
+                                                            <div class="bar">
+                                                                <img src="images/3.png" alt="">
+                                                                <p>Yahiro Ayuko</p>
+                                                                <ul>
+                                                                    <li><span><i class="far fa-clock"></i></span> 29d</li>
+                                                                    <li><span><i class="fas fa-eye"></i></span> 256</li>
+                                                                </ul>
+                                                            </div>
+                                                            <h6>Ep.6 Good signs</h6>
+                                                            <a href="#">City of Dead Wizard <span><i class="fas fa-chevron-circle-right"></i></span></a>
+                                                        </div>
+
+                                                    </div>
+                                                    <!--end box -->
+                                                    <div class="button">
+                                                        <a href="#">More</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="tabs-2">
+                                                <div class="cont">
+                                                    <!-- box -->
+                                                    <div class="box box2">
+                                                        <h6 class="active">Publication Rejected</h6>
+                                                        <p class="date">2019.08.29 13:32:49</p>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate hic aspernatur possimus, enim ipsum illum.</p>
+                                                    </div>
+                                                    <!--end box -->
+                                                    <!-- box -->
+                                                    <div class="box box2">
+                                                        <h6 class="active">Publication Rejected</h6>
+                                                        <p class="date">2019.08.29 13:32:49</p>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate hic aspernatur possimus, enim ipsum illum.</p>
+                                                    </div>
+                                                    <!--end box -->
+                                                    <div class="button">
+                                                        <a href="#">More</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end dropdown -->
+                            </li>
+                            <li>
+                                <!-- dropdown -->
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span style="display: block"><i class="fas fa-user"></i></span>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <div class="profile">
+                                            <img src="images/8.JPG" alt="">
+                                            <div class="text">
+                                                <h5>Yahiro Ayuko</h5>
+                                                <h6>user@gmail.com</h6>
+                                                <button>Register with Writter</button>
+                                            </div>
+                                        </div>
+                                        <a class="dropdown-item" href="#"><span><i class="fas fa-book"></i></span> Webtoons Read</a>
+                                        <a class="dropdown-item" href="#"><span><i class="far fa-star"></i></span> Webtoons Liked</a>
+                                        <a class="dropdown-item" href="#"><span><i class="far fa-square"></i></span> Writers Subscribed</a>
+                                        <a class="dropdown-item" href="#"><span><i class="far fa-clock"></i></span> Webtoons Notifired</a>
+                                    </div>
+                                </div>
+                                <!-- end dropdown -->
+                            </li>
+                            <li><i class="fas fa-ellipsis-h"></i></li>
+                        </ul>
+                    </div>
+                    <!-- end content -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- end header area -->
+
+
+    <!-- upload content -->
+    <div class="upload-content">
+        <div class="container">
+            <form action="/action_page.php" id="form">
+                <!-- bar -->
+                <div class="bar">
+                    <img src="images/5.png" alt="">
+                    <h4>Publish your webtoon</h4>
+                    <button type="submit" id="addButton">Publish</button>
+                </div>
+                <!--end  bar -->
+
+                <!-- upload area -->
+                <div class="up-area">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <!-- left bar -->
+                            <div class="left-bar">
+                                <h4>Webtoon Images</h4>
+                                <div class="up123">
+                                    <input type="file" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple required id="avatarupload">
+                                    <span class="formValidation">Please upload webtoon image file</span>
+                                </div>
+                            </div>
+                            <!-- end left bar -->
+                        </div>
+                        <div class="col-lg-5">
+                            <!-- right bar -->
+                            <div class="right-bar">
+                                <h4>Webtoon Info</h4>
+                                <!-- upload -->
+                                <div class="row no-gutters">
+                                    <div class="col-sm-9">
+                                        <div class="upload">
+                                            <span><i class="fas fa-images upload"></i></span>
+                                            <main class="main_full1">
+                                                <div class="loader">
+                                                    <div class="panel">
+                                                        <div class="button_outer">
+                                                            <div class="btn_upload">
+                                                                <input type="file" id="upload_file" name="">
+                                                                <span class="formValidation2">Please upload webtoon image file</span>
+                                                                Drag or click to <br> upload thumbnail image
+                                                            </div>
+                                                            <div class="processing_bar"></div>
+                                                            <div class="success_box"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="error_msg"></div>
+                                                    <div class="uploaded_file_view" id="uploaded_view">
+                                                        <span class="file_remove">X</span>
+                                                    </div>
+                                                </div>
+                                            </main>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="thumnail">
+                                            <h6>Thumbnail</h6>
+                                            <p>JPG or GIF <br>
+                                                690 x 973 px size <br>
+                                                1MB or less</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end upload -->
+                                <!-- box -->
+                                <div class="box">
+                                    <div class="select">
+                                        <span><i class="fas fa-chevron-down"></i></span>
+                                        <select>
+                                            <option value="volvo" selected>New Series</option>
+                                            <option value="saab">New Series</option>
+                                            <option value="vw">New Series</option>
+                                            <option value="audi" selected>New Series</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- end box -->
+                                <!-- box -->
+                                <div class="box">
+                                    <input type="text" placeholder="Episode Title">
+                                </div>
+                                <!-- end box -->
+                                <!-- box -->
+                                <div class="box sno">
+                                   <div class="row">
+                                       <div class="col-6">
+                                           <h6>Episode Number</h6>
+                                       </div>
+                                       <div class="col-6">
+                                           <input id="colorful" class="form-control" type="number" value="1" min="1" max="10" />
+                                       </div>
+                                   </div>
+                                </div>
+                                <!-- end box -->
+                            </div>
+                            <!-- end right bar -->
+                        </div>
+                    </div>
+                </div>
+                <!-- end upload area -->
+            </form>
+        </div>
+    </div>
+    <!-- end upload content -->
+    
+    
+     <!-- footer area -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="content">
+                        <img src="images/6.JPG" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content">
+                        <ul>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms &amp; Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="content social">
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end footer area -->
+    
+    
+    
+    <div class="upopup">
+        <div class="content">
+           <div class="cross"><img src="images/cross.JPG" alt=""></div>
+            <img src="images/check.JPG" alt="">
+            <h5>The Webtoon has been <br> successfully uploaded</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam reprehenderit doloribus, vero, odio dolorem tenetur!</p>
+            <a href="#">Go to Home Page</a>
+        </div>
+    </div>
+    
+    
+    <div class="upopup2">
+        <div class="content">
+           <div class="cross"><img src="images/cross.JPG" alt=""></div>
+            <img src="images/check.JPG" alt="">
+            <h5>Publish Webtoon</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam reprehenderit doloribus, vero, odio dolorem tenetur!</p>
+            <a href="#" style="background: transparent; color: #f19d01;">Cencel</a>
+            <a href="#" class="publish">Publish</a>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- js link -->
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- jquery ui -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- counting up -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.countup.min.js"></script>
+    <!-- font awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <!-- owl carousel -->
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/bootstrap-number-input.js"></script>
+    <!-- imageuploadify -->
+    <script src="js/imageuploadify.min.js"></script>
+    <!-- custom js -->
+    <script src="js/custom.js"></script>
+    <script>
+        $(function() {
+            $(".t111").tabs();
+            $(".t222").tabs();
+        });
+        $('#colorful').bootstrapNumber({
+            upClass: 'success',
+            downClass: 'danger'
+        });
+    </script>
+</body>
+
+</html>
